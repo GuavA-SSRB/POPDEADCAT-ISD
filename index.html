@@ -68,25 +68,27 @@
 
     <script>
         // 選取出會使用到的圖片容器、累計數字及音訊節點
-        const image = document.querySelector(".image");
+        const image = document.querySelector(".image img");
         const times = document.querySelector(".times");
         const audio = document.querySelector(".pop");
 
-        // 當圖片容器監聽到觸發點擊事件
-        image.addEventListener("click", (event) => {
-            const target = event.target;
+        // 監聽 mousedown（按下）事件 -> 張嘴、計數、播放音效
+        image.addEventListener("mousedown", (event) => {
             let countTimes = Number(times.textContent);
-            // 確保是貓貓圖片被點擊後才會開始進行
-            if (target.alt === "segucat") {
-                    countTimes++;
-                    target.src = "img/segu2.png";
-                audio.currentTime = 0;
-                audio.play();
-                setTimeout(() => {
-                    target.src = "img/segu1.png";
-                }, 100);
-        }
+            countTimes++;  // 增加點擊次數
             times.textContent = countTimes;
+        
+            // 換成張嘴的圖片
+            image.src = "img/segu2.png";
+            
+            // 播放音效
+            audio.currentTime = 0;
+            audio.play();
+        });
+
+        // 監聽 mouseup（放開）事件 -> 閉嘴
+        image.addEventListener("mouseup", () => {
+            image.src = "img/segu1.png"; // 換回閉嘴的圖片
         });
     </script>
 </body>
