@@ -12,6 +12,15 @@ $(document).ready(function () {
         $times.text(countTimes);
         $(this).attr("src", "img/segu2.png"); // 換成張嘴的圖片
 
+        // 點擊時數字放大 + 跳動特效
+        $times.css("font-size", "55px").animate({
+            fontSize: "60px",
+            marginTop: "-5px"
+        }, 100).animate({
+            fontSize: "55px",
+            marginTop: "0px"
+        }, 100);
+
         // 音效邏輯檢查
         if (countTimes % 50 === 0) {
             $audioSpecial50[0].currentTime = 0;
@@ -28,5 +37,9 @@ $(document).ready(function () {
     // 鬆開滑鼠：閉嘴
     $image.mouseup(function () {
         $(this).attr("src", "img/segu1.png"); // 換回閉嘴的圖片
+        // 放開滑鼠時恢復原始樣式
+        $times.css({
+            fontSize: "",
+        });
     });
 });
