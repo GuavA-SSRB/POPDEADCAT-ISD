@@ -12,7 +12,9 @@ body {
     justify-content: center;
     align-items: flex-end;
     text-align: center;
-    font-family: "Nunito", cursive;
+    font-family: "Concert One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
     color: #ffffff;
 }
 
@@ -24,6 +26,7 @@ body {
 
 .content .times {
     font-size: 40px;
+    font-weight: bold;
 }
 
 .content .image {
