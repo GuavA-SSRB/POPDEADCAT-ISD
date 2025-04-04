@@ -79,7 +79,7 @@ $(document).ready(function () {
     
         const timeout = setTimeout(() => {
             element.removeClass(className); // 動畫後移除顏色
-        }, 800); // 顏色維持時間
+        }, 500); // 顏色維持時間
     
         element.data("colorTimeout", timeout); // 保存 timeout ID
     }    
