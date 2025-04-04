@@ -9,38 +9,56 @@ body {
     font-weight: 400;
     font-style: normal;
     color: #ffffff;
-}
-
-.cat-container {
-    width: 100%;
+    overflow: hidden; /* 防止滾動 */
     height: 100vh;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items: flex-end;
-    text-align: center;
 }
 
 .title {
-    font-size: 70px;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    font-size: clamp(30px, 5vw, 70px);
     letter-spacing: 10px;
-    margin: 0 0 20px 0;
+    margin: 0;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
-.content .times {
-    display: none; /* 預設數字0不顯示 */
+.times {
+    position: absolute;
+    top: 20%; /* 比 title 往下 */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
     font-size: 50px;
     font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    display: none;
 }
 
-.content .image {
-    width: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.image {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    pointer-events: none; /* 防止 img 點擊穿透 */
 }
 
 .image img {
-    width: 300%;
-    margin-left: 50px; /* 調整img位置 */
+    width: 100%;
+    height: auto;
+    max-width: 100%;
     cursor: pointer;
+    pointer-events: auto; /* 啟用點擊 */
 }
