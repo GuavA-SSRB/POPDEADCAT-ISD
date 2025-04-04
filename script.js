@@ -21,6 +21,15 @@ $(document).ready(function () {
             marginTop: "0px"
         }, 100);
 
+        // **字體顏色動畫**
+        if (countTimes % 1000 === 0) {
+            animateColor($times, "#ff0000"); // 1000 的倍數變紅色
+        } else if (countTimes % 100 === 0) {
+            animateColor($times, "#ff8800"); // 100 的倍數變橘色
+        } else if (countTimes % 50 === 0) {
+            animateColor($times, "#ffff00"); // 50 的倍數變黃色
+        }
+
         // 音效邏輯檢查
         if (countTimes % 50 === 0) {
             $audioSpecial50[0].currentTime = 0;
@@ -42,4 +51,9 @@ $(document).ready(function () {
             fontSize: "",
         });
     });
+
+    // **字體顏色變化動畫函數**
+    function animateColor(element, color) {
+        element.animate({ color: color }, 300).animate({ color: "#ffffff" }, 500);
+    }
 });
