@@ -5,12 +5,20 @@ $(document).ready(function () {
     const $audioSpecial10 = $(".special-pop"); // 10 的倍數音效
     const $audioSpecial50 = $(".special-pop-50"); // 50 的倍數音效
 
+    // ✅ 預載圖片（避免初次點擊延遲）
+    $("<img />").attr("src", "img/segu1_2.png");
+    $("<img />").attr("src", "img/segu2_2.png");
+
     // 按下滑鼠：張嘴、累計次數、播放音效
     $image.mousedown(function () {
         let countTimes = Number($times.text());
         countTimes++;
         $times.text(countTimes);
-        $(this).attr("src", "img/segu2.png"); // 換成張嘴的圖片
+        
+        // ✅ 加上微延遲，避免圖片切換反應太慢
+        setTimeout(() => {
+            $(this).attr("src", "img/segu2_2.png"); // 換成張嘴的圖片
+        }, 10);
 
         // 點擊時數字放大 + 跳動特效
         $times.css("font-size", "55px").animate({
@@ -45,7 +53,10 @@ $(document).ready(function () {
 
     // 鬆開滑鼠：閉嘴
     $image.mouseup(function () {
-        $(this).attr("src", "img/segu1.png"); // 換回閉嘴的圖片
+        // ✅ 也加上延遲，避免 DOM 重繪卡頓
+        setTimeout(() => {
+            $(this).attr("src", "img/segu1_2.png"); // 換回閉嘴的圖片
+        }, 10);
         // 放開滑鼠時恢復原始樣式
         $times.css({
             fontSize: "",
