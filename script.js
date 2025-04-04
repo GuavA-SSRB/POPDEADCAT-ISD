@@ -4,6 +4,12 @@ $(document).ready(function () {
     const $audioNormal = $(".pop"); // 普通音效
     const $audioSpecial10 = $(".special-pop"); // 10 的倍數音效
     const $audioSpecial50 = $(".special-pop-50"); // 50 的倍數音效
+    // **✅ 音效播放前先 pause() + currentTime = 0**
+    const playAudio = (audioElement) => {
+        audioElement.pause(); // 停止上一個播放
+        audioElement.currentTime = 0; // 重置到開頭
+        audioElement.play();
+    };
 
     // ✅ 預載圖片（避免初次點擊延遲）
     $("<img />").attr("src", "img/segu1.webp");
@@ -14,7 +20,7 @@ $(document).ready(function () {
         let countTimes = Number($times.text());
         countTimes++;
         $times.text(countTimes);
-        
+
         // 如果次數大於 0，顯示 .times
         if (countTimes > 0) {
             $times.css("display", "block");
@@ -26,7 +32,8 @@ $(document).ready(function () {
         }, 10);
 
         // 點擊時數字放大 + 跳動特效
-        $times.css("font-size", "55px").animate({
+        // **✅ 使用 .stop(true, true) 清除舊動畫再執行新動畫**
+        $times.stop(true, true).css("font-size", "55px").animate({
             fontSize: "60px",
             marginTop: "-5px"
         }, 100).animate({
@@ -45,15 +52,13 @@ $(document).ready(function () {
 
         // 音效邏輯檢查
         if (countTimes % 50 === 0) {
-            $audioSpecial50[0].currentTime = 0;
-            $audioSpecial50[0].play(); // 播放 50 的倍數音效
+            playAudio($audioSpecial50[0]);
         } else if (countTimes % 10 === 0) {
-            $audioSpecial10[0].currentTime = 0;
-            $audioSpecial10[0].play(); // 播放 10 的倍數音效
+            playAudio($audioSpecial10[0]);
         } else {
-            $audioNormal[0].currentTime = 0;
-            $audioNormal[0].play(); // 播放普通音效
+            playAudio($audioNormal[0]);
         }
+        
     });
 
     // 鬆開滑鼠：閉嘴
