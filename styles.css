@@ -62,3 +62,17 @@ body {
     cursor: pointer;
     pointer-events: auto; /* 啟用點擊 */
 }
+
+/* 顏色動畫類別 */
+.color-red {
+    color: #ff0000 !important;
+    transition: color 0.3s ease;
+}
+.color-orange {
+    color: #ff8800 !important;
+    transition: color 0.3s ease;
+}
+.color-yellow {
+    color: #ffff00 !important;
+    transition: color 0.3s ease;
+}
