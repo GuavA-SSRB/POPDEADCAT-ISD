@@ -27,6 +27,7 @@ body {
 }
 
 .content .times {
+    display: none; /* 預設數字0不顯示 */
     font-size: 50px;
     font-weight: bold;
 }
