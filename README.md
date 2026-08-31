@@ -1,6 +1,6 @@
 # POPDEADCAT
 
-This project is to design a POPCAT-like web page with segu's dead cat out fit.
+This project is to design a POPCAT-like web page with segu's dead cat outfit.
 
 ---
 
